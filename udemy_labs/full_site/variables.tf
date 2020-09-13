@@ -17,4 +17,12 @@ variable "my_instance" {
     }
 }
 
+variable "my_domain" {
+    default = "terraform.mymoodle-demo.com"
+}
+
+variable "my_zone_id" {
+    default = "Z0977607AGBHJRXEL6G6"
+}
+
 

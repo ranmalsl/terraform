@@ -6,6 +6,10 @@ resource "aws_autoscaling_group" "web_asg" {
     max_size = 5
     desired_capacity = 3
 
+    lifecycle {
+        create_before_destroy = true
+    }
+
     tag {
         key = "Name"
         value = "terraform-asg"

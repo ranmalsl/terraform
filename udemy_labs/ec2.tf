@@ -7,9 +7,10 @@ resource "aws_instance" "ranz_in_action" {
     user_data = <<-EOF
     #!/bin/bash
     yum -y update
-    yum -y install httpd
+    yum -y install httpd curl
     systemctl enable httpd && systemctl start httpd
     echo "<b>Hello World</b>" > /var/www/html/index.html
+    curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/ami-id >> /var/www/html/index.html
     EOF
     tags = {
         Name = "My first"
